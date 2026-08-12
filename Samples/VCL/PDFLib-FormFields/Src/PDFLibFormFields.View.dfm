@@ -1,9 +1,9 @@
 object PDFLibFormFieldsView: TPDFLibFormFieldsView
   Left = 0
   Top = 0
-  Caption = 'PDF Generation'
+  Caption = 'TMS FNC PDFLib - Form Fields'
   ClientHeight = 188
-  ClientWidth = 274
+  ClientWidth = 375
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object PDFLibFormFieldsView: TPDFLibFormFieldsView
   Font.Style = []
   TextHeight = 15
   object Button1: TButton
-    Left = 24
+    Left = 64
     Top = 64
     Width = 225
     Height = 57

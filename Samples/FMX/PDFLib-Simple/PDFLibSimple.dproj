@@ -1,17 +1,27 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{87AF6925-38C1-42DA-BAE4-C6B57B0456E5}</ProjectGuid>
+        <ProjectGuid>{688E18C7-E0C8-4805-8B6E-FF01B6533175}</ProjectGuid>
         <ProjectVersion>20.3</ProjectVersion>
-        <FrameworkType>VCL</FrameworkType>
+        <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
-        <ProjectName Condition="'$(ProjectName)'==''">PDFLibFormFields</ProjectName>
-        <TargetedPlatforms>3</TargetedPlatforms>
+        <ProjectName Condition="'$(ProjectName)'==''">PDFLibSimple</ProjectName>
+        <TargetedPlatforms>32787</TargetedPlatforms>
         <AppType>Application</AppType>
-        <MainSource>PDFLibFormFields.dpr</MainSource>
+        <MainSource>PDFLibSimple.dpr</MainSource>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Android' and '$(Base)'=='true') or '$(Base_Android)'!=''">
+        <Base_Android>true</Base_Android>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Android64' and '$(Base)'=='true') or '$(Base_Android64)'!=''">
+        <Base_Android64>true</Base_Android64>
+        <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
@@ -60,13 +70,13 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_DcuOutput>DCU\$(Platform)\$(Config)</DCC_DcuOutput>
-        <DCC_ExeOutput>Bin</DCC_ExeOutput>
+        <DCC_ExeOutput>Bin\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
         <DCC_N>false</DCC_N>
         <DCC_S>false</DCC_S>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
-        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <AUP_ACCESS_COARSE_LOCATION>true</AUP_ACCESS_COARSE_LOCATION>
         <AUP_ACCESS_FINE_LOCATION>true</AUP_ACCESS_FINE_LOCATION>
         <AUP_CALL_PHONE>true</AUP_CALL_PHONE>
@@ -77,12 +87,78 @@
         <AUP_READ_PHONE_STATE>true</AUP_READ_PHONE_STATE>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
-        <SanitizedProjectName>PDFLibFormFields</SanitizedProjectName>
-        <VerInfo_Locale>1046</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <SanitizedProjectName>PDFLibSimple</SanitizedProjectName>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Android)'!=''">
+        <DCC_UsePackage>FMXTMSFNCUIPackPkg;fmx;DbxCommonDriver;bindengine;IndyIPCommon;emsclient;IndyProtocols;dbxcds;aurelius;FMX_FlexCel_Components;FmxTeeUI;FlexCel_Pdf;FireDACSqliteDriver;DbxClientDriver;soapmidas;dbexpress;inet;FMX_FlexCel_Core;FireDACDBXDriver;tmsbcl;CustomIPTransport;ZCore;ZParseSql;IndySystem;TMSFNCCorePkg;FireDACCommon;emsserverresource;TMSAIStudioPkg;FlexCel_Render;ZComponent;bindcompdbx;rtl;DBXSqliteDriver;FMXTMSFNCChartPkg;DataSnapFireDAC;FireDAC;xmlrtl;dsnap;xdata;DataSnapNativeClient;FMXTMSFNCMapsPkg;FMXTMSFNCCorePkg;emshosting;sparkle;FireDACCommonDriver;IndyIPClient;emsedge;bindcompfmx;fmxFireDAC;DataSnapCommon;fmxase;dbrtl;FlexCel_XlsAdapter;DBXInterBaseDriver;ACBr_PIXCD;FlexCel_Core;FMXTMSFNCDashboardPackPkg;bindcomp;inetstn;IndyCore;RESTBackendComponents;ZPlain;RESTComponents;IndyIPServer;dsnapxml;DataSnapClient;DataSnapProviderClient;TMSAIStudioPkgExtensions;TMSFNCPushNotificationsPkg;emsclientfiredac;FireDACDSDriver;tethering;ZDbc;CloudService;FMXTee;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35</VerInfo_Keys>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Android_LauncherIcon36>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png</Android_LauncherIcon36>
+        <Android_LauncherIcon48>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png</Android_LauncherIcon48>
+        <Android_LauncherIcon72>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png</Android_LauncherIcon72>
+        <Android_LauncherIcon96>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png</Android_LauncherIcon96>
+        <Android_LauncherIcon144>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png</Android_LauncherIcon144>
+        <Android_LauncherIcon192>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png</Android_LauncherIcon192>
+        <Android_SplashImage426>$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png</Android_SplashImage426>
+        <Android_SplashImage470>$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png</Android_SplashImage470>
+        <Android_SplashImage640>$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png</Android_SplashImage640>
+        <Android_SplashImage960>$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png</Android_SplashImage960>
+        <IncludeAndroid_AdaptiveIcon>true</IncludeAndroid_AdaptiveIcon>
+        <IncludeAndroid_VectorizedSplash>true</IncludeAndroid_VectorizedSplash>
+        <Android_AdaptiveIconMonochrome>$(BDS)\bin\Artwork\Android\FM_AdaptiveIcon_Monochrome.xml</Android_AdaptiveIconMonochrome>
+        <Android_AdaptiveIconForeground>$(BDS)\bin\Artwork\Android\FM_AdaptiveIcon_Foreground.xml</Android_AdaptiveIconForeground>
+        <Android_AdaptiveIconBackground>$(BDS)\bin\Artwork\Android\FM_AdaptiveIcon_Background.xml</Android_AdaptiveIconBackground>
+        <Android_VectorizedSplash>$(BDS)\bin\Artwork\Android\FM_VectorizedSplash.xml</Android_VectorizedSplash>
+        <Android_VectorizedSplashDark>$(BDS)\bin\Artwork\Android\FM_VectorizedSplashDark.xml</Android_VectorizedSplashDark>
+        <Android_VectorizedSplashV31>$(BDS)\bin\Artwork\Android\FM_VectorizedSplashV31.xml</Android_VectorizedSplashV31>
+        <Android_VectorizedSplashV31Dark>$(BDS)\bin\Artwork\Android\FM_VectorizedSplashV31Dark.xml</Android_VectorizedSplashV31Dark>
+        <Android_NotificationIcon24>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png</Android_NotificationIcon24>
+        <Android_NotificationIcon36>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png</Android_NotificationIcon36>
+        <Android_NotificationIcon48>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png</Android_NotificationIcon48>
+        <Android_NotificationIcon72>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png</Android_NotificationIcon72>
+        <Android_NotificationIcon96>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png</Android_NotificationIcon96>
+        <IncludeAndroid_NotificationAccentColor>false</IncludeAndroid_NotificationAccentColor>
+        <IncludeAndroid_VectorizedNotificationIcon>true</IncludeAndroid_VectorizedNotificationIcon>
+        <Android_VectorizedNotificationIcon>$(BDS)\bin\Artwork\Android\FM_VectorizedNotificationIcon.xml</Android_VectorizedNotificationIcon>
+        <EnabledSysJars>activity-1.7.2.dex.jar;annotation-experimental-1.4.1.dex.jar;annotation-jvm-1.8.1.dex.jar;annotations-13.0.dex.jar;appcompat-1.2.0.dex.jar;appcompat-resources-1.2.0.dex.jar;billing-7.1.1.dex.jar;biometric-1.1.0.dex.jar;browser-1.4.0.dex.jar;cloud-messaging.dex.jar;collection-jvm-1.4.2.dex.jar;concurrent-futures-1.1.0.dex.jar;core-1.15.0.dex.jar;core-common-2.2.0.dex.jar;core-ktx-1.15.0.dex.jar;core-runtime-2.2.0.dex.jar;cursoradapter-1.0.0.dex.jar;customview-1.0.0.dex.jar;documentfile-1.0.0.dex.jar;drawerlayout-1.0.0.dex.jar;error_prone_annotations-2.9.0.dex.jar;exifinterface-1.3.6.dex.jar;firebase-annotations-16.2.0.dex.jar;firebase-common-20.3.1.dex.jar;firebase-components-17.1.0.dex.jar;firebase-datatransport-18.1.7.dex.jar;firebase-encoders-17.0.0.dex.jar;firebase-encoders-json-18.0.0.dex.jar;firebase-encoders-proto-16.0.0.dex.jar;firebase-iid-interop-17.1.0.dex.jar;firebase-installations-17.1.3.dex.jar;firebase-installations-interop-17.1.0.dex.jar;firebase-measurement-connector-19.0.0.dex.jar;firebase-messaging-23.1.2.dex.jar;fmx.dex.jar;fragment-1.2.5.dex.jar;google-play-licensing.dex.jar;interpolator-1.0.0.dex.jar;javax.inject-1.dex.jar;kotlin-stdlib-1.8.22.dex.jar;kotlin-stdlib-common-1.8.22.dex.jar;kotlin-stdlib-jdk7-1.8.22.dex.jar;kotlin-stdlib-jdk8-1.8.22.dex.jar;kotlinx-coroutines-android-1.6.4.dex.jar;kotlinx-coroutines-core-jvm-1.6.4.dex.jar;legacy-support-core-utils-1.0.0.dex.jar;lifecycle-common-2.6.2.dex.jar;lifecycle-livedata-2.6.2.dex.jar;lifecycle-livedata-core-2.6.2.dex.jar;lifecycle-runtime-2.6.2.dex.jar;lifecycle-service-2.6.2.dex.jar;lifecycle-viewmodel-2.6.2.dex.jar;lifecycle-viewmodel-savedstate-2.6.2.dex.jar;listenablefuture-1.0.dex.jar;loader-1.0.0.dex.jar;localbroadcastmanager-1.0.0.dex.jar;okio-jvm-3.4.0.dex.jar;play-services-ads-22.2.0.dex.jar;play-services-ads-base-22.2.0.dex.jar;play-services-ads-identifier-18.0.0.dex.jar;play-services-ads-lite-22.2.0.dex.jar;play-services-appset-16.0.1.dex.jar;play-services-base-18.5.0.dex.jar;play-services-basement-18.4.0.dex.jar;play-services-cloud-messaging-17.0.1.dex.jar;play-services-location-21.0.1.dex.jar;play-services-maps-18.1.0.dex.jar;play-services-measurement-base-20.1.2.dex.jar;play-services-measurement-sdk-api-20.1.2.dex.jar;play-services-stats-17.0.2.dex.jar;play-services-tasks-18.2.0.dex.jar;print-1.0.0.dex.jar;profileinstaller-1.3.0.dex.jar;room-common-2.2.5.dex.jar;room-runtime-2.2.5.dex.jar;savedstate-1.2.1.dex.jar;sqlite-2.1.0.dex.jar;sqlite-framework-2.1.0.dex.jar;startup-runtime-1.1.1.dex.jar;tracing-1.2.0.dex.jar;transport-api-3.0.0.dex.jar;transport-backend-cct-3.1.8.dex.jar;transport-runtime-3.1.8.dex.jar;user-messaging-platform-2.0.0.dex.jar;vectordrawable-1.1.0.dex.jar;vectordrawable-animated-1.1.0.dex.jar;versionedparcelable-1.1.1.dex.jar;viewpager-1.0.0.dex.jar;work-runtime-2.7.0.dex.jar</EnabledSysJars>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Android64)'!=''">
+        <DCC_UsePackage>ACBr_NFCom;FMXTMSFNCUIPackPkg;fmx;DbxCommonDriver;bindengine;IndyIPCommon;emsclient;IndyProtocols;dbxcds;aurelius;FMX_FlexCel_Components;FmxTeeUI;FlexCel_Pdf;FireDACSqliteDriver;DbxClientDriver;soapmidas;ACBr_PagFor;dbexpress;inet;FMX_FlexCel_Core;FireDACDBXDriver;tmsbcl;CustomIPTransport;ZCore;ACBr_NFSeX;ZParseSql;IndySystem;ACBr_NFSeXDanfseRL;TMSFNCCorePkg;FireDACCommon;emsserverresource;ACBr_SATExtratoFPDF;TMSAIStudioPkg;FlexCel_Render;ZComponent;bindcompdbx;rtl;frce;DBXSqliteDriver;FMXTMSFNCChartPkg;DataSnapFireDAC;FireDAC;xmlrtl;dsnap;xdata;DataSnapNativeClient;FMXTMSFNCMapsPkg;FMXTMSFNCCorePkg;emshosting;sparkle;FireDACCommonDriver;IndyIPClient;emsedge;bindcompfmx;fmxFireDAC;DataSnapCommon;dbrtl;FlexCel_XlsAdapter;DBXInterBaseDriver;ACBr_PIXCD;FlexCel_Core;FMXTMSFNCDashboardPackPkg;bindcomp;inetstn;IndyCore;RESTBackendComponents;ZPlain;RESTComponents;IndyIPServer;dsnapxml;DataSnapClient;DataSnapProviderClient;TMSAIStudioPkgExtensions;TMSFNCPushNotificationsPkg;ACBr_Boleto;emsclientfiredac;FireDACDSDriver;ACBrBaaS;tethering;ZDbc;ACBr_GTIN;CloudService;ACBr_OFX;FMXTee;ACBr_DebitoAutomatico;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=;minSdkVersion=23;targetSdkVersion=35</VerInfo_Keys>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Android_LauncherIcon36>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png</Android_LauncherIcon36>
+        <Android_LauncherIcon48>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png</Android_LauncherIcon48>
+        <Android_LauncherIcon72>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png</Android_LauncherIcon72>
+        <Android_LauncherIcon96>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png</Android_LauncherIcon96>
+        <Android_LauncherIcon144>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png</Android_LauncherIcon144>
+        <Android_LauncherIcon192>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png</Android_LauncherIcon192>
+        <Android_SplashImage426>$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png</Android_SplashImage426>
+        <Android_SplashImage470>$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png</Android_SplashImage470>
+        <Android_SplashImage640>$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png</Android_SplashImage640>
+        <Android_SplashImage960>$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png</Android_SplashImage960>
+        <IncludeAndroid_AdaptiveIcon>true</IncludeAndroid_AdaptiveIcon>
+        <IncludeAndroid_VectorizedSplash>true</IncludeAndroid_VectorizedSplash>
+        <Android_AdaptiveIconMonochrome>$(BDS)\bin\Artwork\Android\FM_AdaptiveIcon_Monochrome.xml</Android_AdaptiveIconMonochrome>
+        <Android_AdaptiveIconForeground>$(BDS)\bin\Artwork\Android\FM_AdaptiveIcon_Foreground.xml</Android_AdaptiveIconForeground>
+        <Android_AdaptiveIconBackground>$(BDS)\bin\Artwork\Android\FM_AdaptiveIcon_Background.xml</Android_AdaptiveIconBackground>
+        <Android_VectorizedSplash>$(BDS)\bin\Artwork\Android\FM_VectorizedSplash.xml</Android_VectorizedSplash>
+        <Android_VectorizedSplashDark>$(BDS)\bin\Artwork\Android\FM_VectorizedSplashDark.xml</Android_VectorizedSplashDark>
+        <Android_VectorizedSplashV31>$(BDS)\bin\Artwork\Android\FM_VectorizedSplashV31.xml</Android_VectorizedSplashV31>
+        <Android_VectorizedSplashV31Dark>$(BDS)\bin\Artwork\Android\FM_VectorizedSplashV31Dark.xml</Android_VectorizedSplashV31Dark>
+        <Android_NotificationIcon24>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png</Android_NotificationIcon24>
+        <Android_NotificationIcon36>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png</Android_NotificationIcon36>
+        <Android_NotificationIcon48>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png</Android_NotificationIcon48>
+        <Android_NotificationIcon72>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png</Android_NotificationIcon72>
+        <Android_NotificationIcon96>$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png</Android_NotificationIcon96>
+        <IncludeAndroid_NotificationAccentColor>false</IncludeAndroid_NotificationAccentColor>
+        <IncludeAndroid_VectorizedNotificationIcon>true</IncludeAndroid_VectorizedNotificationIcon>
+        <Android_VectorizedNotificationIcon>$(BDS)\bin\Artwork\Android\FM_VectorizedNotificationIcon.xml</Android_VectorizedNotificationIcon>
+        <EnabledSysJars>activity-1.7.2.dex.jar;annotation-experimental-1.4.1.dex.jar;annotation-jvm-1.8.1.dex.jar;annotations-13.0.dex.jar;appcompat-1.2.0.dex.jar;appcompat-resources-1.2.0.dex.jar;billing-7.1.1.dex.jar;biometric-1.1.0.dex.jar;browser-1.4.0.dex.jar;cloud-messaging.dex.jar;collection-jvm-1.4.2.dex.jar;concurrent-futures-1.1.0.dex.jar;core-1.15.0.dex.jar;core-common-2.2.0.dex.jar;core-ktx-1.15.0.dex.jar;core-runtime-2.2.0.dex.jar;cursoradapter-1.0.0.dex.jar;customview-1.0.0.dex.jar;documentfile-1.0.0.dex.jar;drawerlayout-1.0.0.dex.jar;error_prone_annotations-2.9.0.dex.jar;exifinterface-1.3.6.dex.jar;firebase-annotations-16.2.0.dex.jar;firebase-common-20.3.1.dex.jar;firebase-components-17.1.0.dex.jar;firebase-datatransport-18.1.7.dex.jar;firebase-encoders-17.0.0.dex.jar;firebase-encoders-json-18.0.0.dex.jar;firebase-encoders-proto-16.0.0.dex.jar;firebase-iid-interop-17.1.0.dex.jar;firebase-installations-17.1.3.dex.jar;firebase-installations-interop-17.1.0.dex.jar;firebase-measurement-connector-19.0.0.dex.jar;firebase-messaging-23.1.2.dex.jar;fmx.dex.jar;fragment-1.2.5.dex.jar;google-play-licensing.dex.jar;interpolator-1.0.0.dex.jar;javax.inject-1.dex.jar;kotlin-stdlib-1.8.22.dex.jar;kotlin-stdlib-common-1.8.22.dex.jar;kotlin-stdlib-jdk7-1.8.22.dex.jar;kotlin-stdlib-jdk8-1.8.22.dex.jar;kotlinx-coroutines-android-1.6.4.dex.jar;kotlinx-coroutines-core-jvm-1.6.4.dex.jar;legacy-support-core-utils-1.0.0.dex.jar;lifecycle-common-2.6.2.dex.jar;lifecycle-livedata-2.6.2.dex.jar;lifecycle-livedata-core-2.6.2.dex.jar;lifecycle-runtime-2.6.2.dex.jar;lifecycle-service-2.6.2.dex.jar;lifecycle-viewmodel-2.6.2.dex.jar;lifecycle-viewmodel-savedstate-2.6.2.dex.jar;listenablefuture-1.0.dex.jar;loader-1.0.0.dex.jar;localbroadcastmanager-1.0.0.dex.jar;okio-jvm-3.4.0.dex.jar;play-services-ads-22.2.0.dex.jar;play-services-ads-base-22.2.0.dex.jar;play-services-ads-identifier-18.0.0.dex.jar;play-services-ads-lite-22.2.0.dex.jar;play-services-appset-16.0.1.dex.jar;play-services-base-18.5.0.dex.jar;play-services-basement-18.4.0.dex.jar;play-services-cloud-messaging-17.0.1.dex.jar;play-services-location-21.0.1.dex.jar;play-services-maps-18.1.0.dex.jar;play-services-measurement-base-20.1.2.dex.jar;play-services-measurement-sdk-api-20.1.2.dex.jar;play-services-stats-17.0.2.dex.jar;play-services-tasks-18.2.0.dex.jar;print-1.0.0.dex.jar;profileinstaller-1.3.0.dex.jar;room-common-2.2.5.dex.jar;room-runtime-2.2.5.dex.jar;savedstate-1.2.1.dex.jar;sqlite-2.1.0.dex.jar;sqlite-framework-2.1.0.dex.jar;startup-runtime-1.1.1.dex.jar;tracing-1.2.0.dex.jar;transport-api-3.0.0.dex.jar;transport-backend-cct-3.1.8.dex.jar;transport-runtime-3.1.8.dex.jar;user-messaging-platform-2.0.0.dex.jar;vectordrawable-1.1.0.dex.jar;vectordrawable-animated-1.1.0.dex.jar;versionedparcelable-1.1.1.dex.jar;viewpager-1.0.0.dex.jar;work-runtime-2.7.0.dex.jar</EnabledSysJars>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>vclwinx;DataSnapServer;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;dbxcds;vcledge;VCLTMSFNCChartPkgDXE15;DBXFirebirdDriver;VCLTMSFNCChartPkgDXE15;VCLTMSFNCAppToolsPkgDXE15;FireDACSqliteDriver;DbxClientDriver;soapmidas;dbexpress;inet;vcltouch;FireDACDBXDriver;fmxdae;CustomIPTransport;FireDACMSSQLDriver;IndySystem;VCLTMSFNCWebSocketPkgDXE15;vclFireDAC;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;bindcompdbx;rtl;FireDACMySQLDriver;VCLTMSFNCWXPackPkgDXE15;TMSFNCPushNotificationsPkgDXE15;DBXSqliteDriver;TMSVCLUIPackPkgDXE15;DBXSybaseASEDriver;TMSWEBCorePkgDXE15;vclimg;DataSnapFireDAC;inetdbxpress;FireDAC;xmlrtl;VCLTMSFNCWXPackPkgDXE15;dsnap;FireDACDb2Driver;DBXOracleDriver;DBXInformixDriver;fmxobj;bindcompvclsmp;DataSnapNativeClient;DatasnapConnectorsFreePascal;VCLTMSFNCUIPackPkgDXE15;TMSFNCCorePkgDXE15;MCP;VCLTMSFNCAppToolsPkgDXE15;VCLTMSFNCCorePkgDXE15;emshosting;FireDACCommonDriver;IndyIPClient;bindcompvclwinx;emsedge;bindcompfmx;TMSVCLUIPackPkgExDXE15;inetdb;FireDACASADriver;vclactnband;TMSVCLUIPackPkgXlsDXE15;fmxFireDAC;FireDACInfxDriver;DBXMySQLDriver;VclSmp;DataSnapCommon;fmxase;TMSVCLUIPackPkgWizDXE15;DBXOdbcDriver;dbrtl;FireDACOracleDriver;Skia.Package.VCL;FireDACMSAccDriver;DataSnapIndy10ServerTransport;VCLTMSFNCCloudPackPkgDXE15;DataSnapConnectors;VCLTMSFNCMapsPkgDXE15;vcldsnap;DBXInterBaseDriver;FireDACMongoDBDriver;FireDACTDataDriver;Skia.Package.VCL;VCLTMSFNCUIPackPkgDXE15;vcldb;VCLTMSFNCWebSocketPkgDXE15;bindcomp;inetstn;IndyCore;RESTBackendComponents;FireDACADSDriver;RESTComponents;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;DataSnapClient;DataSnapProviderClient;VCLTMSFNCMapsPkgDXE15;DBXDb2Driver;emsclientfiredac;FireDACPgDriver;FireDACDSDriver;tethering;bindcompvcl;CloudService;DBXSybaseASADriver;VCLTMSFNCCloudPackPkgDXE15;TMSWEBCorePkgLibDXE15;VCLTMSFNCCorePkgDXE15;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>VCLTMSFNCMapsPkg;vclwinx;DataSnapServer;ACBr_ONE;ACBr_TCP;ACBr_BPeDabpeESCPOS;ACBr_NFCom;FMXTMSFNCUIPackPkg;fs29;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;bsfd103Rio;ACBr_OpenSSL;appanalytics;IndyProtocols;vclx;Skia.Package.RTL;VCLTMSFNCDashboardPackPkg;dbxcds;vcledge;aurelius;FMX_FlexCel_Components;FmxTeeUI;ACBr_BoletoRL;FlexCel_Pdf;DBXFirebirdDriver;ACBr_CTeDacteFR;ACBr_NFCeECFVirtual;ACBr_DCeDACERL;FireDACSqliteDriver;DbxClientDriver;soapmidas;ACBr_NF3eDANF3eESCPOS;TeeUI;ACBr_PagFor;dbexpress;ACBr_Reinf;ACBr_NFSeXDanfseFPDF;inet;ACBr_BoletoFPDF;vcltouch;FMX_FlexCel_Core;FireDACDBXDriver;ACBr_NF3eDANF3eRL;fmxdae;tmsbcl;VCL_FlexCel_Core;CustomIPTransport;FireDACMSSQLDriver;ZCore;C4DDateEdit;ACBr_NFSeX;ZParseSql;C4DWizard;ACBr_NFe;frxPDF29;ACBr_CTeDacteRL;C4DMaskEdit;IndySystem;ACBr_Diversos;ACBr_GNREGuiaRL;frxe29;ZipMasterR;ACBr_NFSeXDanfseRL;ACBr_SAT;TMSFNCCorePkg;ACBr_CIOT;VirtualTreesR;ACBr_TEFD;fsDB29;VCLTMSFNCChartPkg;VDOPrint;vclFireDAC;ACBr_SPED;ACBr_CTe;ACBr_SATWS;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;ACBr_SEF2;ACBr_LCDPR;ACBr_SATExtratoFPDF;TMSAIStudioPkg;DelphiAIDeveloper;FlexCel_Render;ZComponent;bindcompdbx;rtl;FireDACMySQLDriver;ACBr_NFeDanfeFR;ACBr_DCe;VCL_FlexCel_Components;frce;ACBr_BPe;DBXSqliteDriver;FMXTMSFNCChartPkg;ACBr_Sintegra;DBXSybaseASEDriver;ACBr_Serial;ACBr_Comum;ACBr_MDFe;ACBr_NFeDanfeESCPOS;vclimg;DataSnapFireDAC;inetdbxpress;FireDAC;VCLTMSFNCUIPackPkg;xmlrtl;dsnap;xdata;FireDACDb2Driver;ACBr_BPeDabpeFR;DBXOracleDriver;DBXInformixDriver;ACBr_SATECFVirtual;fmxobj;bindcompvclsmp;DataSnapNativeClient;frx29;ACBr_SATExtratoFR;FMXTMSFNCMapsPkg;DatasnapConnectorsFreePascal;ACBr_MDFeDAMDFEFPDF;frxIntIOIndy29;FMXTMSFNCCorePkg;ACBr_NF3e;ACBr_PAF;ACBr_OpenDelivery;ACBr_NFeDanfeFPDF;ACBr_MDFeDamdfeFR;TMSWEBCorePkgLib;ACBr_SPEDImportar;emshosting;sparkle;MSNPopUp_D104;frxDB29;FireDACCommonDriver;ACBr_ADRCST;ACBr_MTER;IndyIPClient;frxHTML29;bindcompvclwinx;ACBr_Convenio115;emsedge;bindcompfmx;ACBr_NFComDANFComRL;inetdb;FireDACASADriver;ACBr_LFD;TMSWEBCorePkg;Tee;vclactnband;fmxFireDAC;FireDACInfxDriver;DBXMySQLDriver;fsADO29;VclSmp;ACBr_Ponto;DataSnapCommon;fmxase;DBXOdbcDriver;dbrtl;FireDACOracleDriver;Skia.Package.FMX;ACBre_Social;TeeDB;FlexCel_XlsAdapter;FireDACMSAccDriver;frxcs29;DataSnapIndy10ServerTransport;DataSnapConnectors;ACBr_ANe;ACBr_SATExtratoRL;vcldsnap;DBXInterBaseDriver;FireDACMongoDBDriver;ACBR_DeSTDA;PngComponentsD;ACBr_GNRE;ACBr_EDI;FireDACTDataDriver;Skia.Package.VCL;vcldb;ACBr_Integrador;ACBr_PIXCD;FlexCel_Core;FMXTMSFNCDashboardPackPkg;ACBr_BoletoFR;bindcomp;inetstn;IndyCore;RESTBackendComponents;ZPlain;frxIntIO29;FireDACADSDriver;RESTComponents;ACBr_NFSeXDANFSeFR;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;DataSnapClient;DataSnapProviderClient;ACBr_MDFeDamdfeRL;TMSAIStudioPkgExtensions;frxADO29;DBXDb2Driver;TMSFNCPushNotificationsPkg;ACBr_Boleto;emsclientfiredac;FireDACPgDriver;FireDACDSDriver;ACBr_BlocoX;ACBrBaaS;tethering;ACBr_SATExtratoESCPOS;ZDbc;bindcompvcl;ACBr_GTIN;CloudService;DBXSybaseASADriver;ACBr_OFX;VCLTMSFNCCorePkg;ACBr_PAFNFCe;FMXTee;ACBr_DebitoAutomatico;ACBr_NFeDanfeRL;DSPack_DXE2;ACBr_GNREGuiaFR;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -91,12 +167,9 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
-        <DCC_ExeOutput>.\bin</DCC_ExeOutput>
-        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
-        <Icon_MainIcon>TMSLogo.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_UsePackage>vclwinx;DataSnapServer;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;appanalytics;IndyProtocols;vclx;dbxcds;vcledge;VCLTMSFNCChartPkgDXE15;DBXFirebirdDriver;VCLTMSFNCChartPkgDXE15;VCLTMSFNCAppToolsPkgDXE15;FireDACSqliteDriver;DbxClientDriver;soapmidas;dbexpress;inet;vcltouch;FireDACDBXDriver;fmxdae;CustomIPTransport;FireDACMSSQLDriver;IndySystem;VCLTMSFNCWebSocketPkgDXE15;vclFireDAC;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;bindcompdbx;rtl;FireDACMySQLDriver;VCLTMSFNCWXPackPkgDXE15;TMSFNCPushNotificationsPkgDXE15;DBXSqliteDriver;TMSVCLUIPackPkgDXE15;DBXSybaseASEDriver;TMSWEBCorePkgDXE15;vclimg;DataSnapFireDAC;inetdbxpress;FireDAC;xmlrtl;VCLTMSFNCWXPackPkgDXE15;dsnap;FireDACDb2Driver;DBXOracleDriver;DBXInformixDriver;fmxobj;bindcompvclsmp;DataSnapNativeClient;DatasnapConnectorsFreePascal;VCLTMSFNCUIPackPkgDXE15;TMSFNCCorePkgDXE15;VCLTMSFNCAppToolsPkgDXE15;VCLTMSFNCCorePkgDXE15;emshosting;FireDACCommonDriver;IndyIPClient;bindcompvclwinx;emsedge;bindcompfmx;TMSVCLUIPackPkgExDXE15;inetdb;FireDACASADriver;vclactnband;TMSVCLUIPackPkgXlsDXE15;fmxFireDAC;FireDACInfxDriver;DBXMySQLDriver;VclSmp;DataSnapCommon;fmxase;DBXOdbcDriver;dbrtl;FireDACOracleDriver;FireDACMSAccDriver;DataSnapIndy10ServerTransport;VCLTMSFNCCloudPackPkgDXE15;DataSnapConnectors;VCLTMSFNCMapsPkgDXE15;vcldsnap;DBXInterBaseDriver;FireDACMongoDBDriver;FireDACTDataDriver;Skia.Package.VCL;VCLTMSFNCUIPackPkgDXE15;vcldb;VCLTMSFNCWebSocketPkgDXE15;bindcomp;inetstn;IndyCore;RESTBackendComponents;FireDACADSDriver;RESTComponents;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;DataSnapClient;DataSnapProviderClient;VCLTMSFNCMapsPkgDXE15;DBXDb2Driver;emsclientfiredac;FireDACPgDriver;FireDACDSDriver;tethering;bindcompvcl;CloudService;DBXSybaseASADriver;VCLTMSFNCCloudPackPkgDXE15;TMSWEBCorePkgLibDXE15;VCLTMSFNCCorePkgDXE15;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>VCLTMSFNCMapsPkg;vclwinx;DataSnapServer;FMXTMSFNCUIPackPkg;fmx;vclie;DbxCommonDriver;bindengine;IndyIPCommon;VCLRESTComponents;DBXMSSQLDriver;FireDACCommonODBC;emsclient;appanalytics;IndyProtocols;vclx;VCLTMSFNCDashboardPackPkg;dbxcds;vcledge;aurelius;FMX_FlexCel_Components;FmxTeeUI;FlexCel_Pdf;DBXFirebirdDriver;FireDACSqliteDriver;DbxClientDriver;soapmidas;TeeUI;dbexpress;inet;vcltouch;FMX_FlexCel_Core;FireDACDBXDriver;fmxdae;tmsbcl;VCL_FlexCel_Core;CustomIPTransport;FireDACMSSQLDriver;ZCore;ZParseSql;IndySystem;ZipMasterR;TMSFNCCorePkg;VirtualTreesR;VCLTMSFNCChartPkg;vclFireDAC;FireDACCommon;DataSnapServerMidas;FireDACODBCDriver;emsserverresource;TMSAIStudioPkg;FlexCel_Render;ZComponent;bindcompdbx;rtl;FireDACMySQLDriver;VCL_FlexCel_Components;DBXSqliteDriver;FMXTMSFNCChartPkg;DBXSybaseASEDriver;vclimg;DataSnapFireDAC;inetdbxpress;FireDAC;VCLTMSFNCUIPackPkg;xmlrtl;dsnap;xdata;FireDACDb2Driver;DBXOracleDriver;DBXInformixDriver;fmxobj;bindcompvclsmp;DataSnapNativeClient;FMXTMSFNCMapsPkg;DatasnapConnectorsFreePascal;FMXTMSFNCCorePkg;TMSWEBCorePkgLib;emshosting;sparkle;FireDACCommonDriver;IndyIPClient;bindcompvclwinx;emsedge;bindcompfmx;inetdb;FireDACASADriver;TMSWEBCorePkg;Tee;vclactnband;fmxFireDAC;FireDACInfxDriver;DBXMySQLDriver;VclSmp;DataSnapCommon;fmxase;DBXOdbcDriver;dbrtl;FireDACOracleDriver;TeeDB;FlexCel_XlsAdapter;FireDACMSAccDriver;DataSnapIndy10ServerTransport;DataSnapConnectors;vcldsnap;DBXInterBaseDriver;FireDACMongoDBDriver;PngComponentsD;FireDACTDataDriver;Skia.Package.VCL;vcldb;FlexCel_Core;FMXTMSFNCDashboardPackPkg;bindcomp;inetstn;IndyCore;RESTBackendComponents;ZPlain;FireDACADSDriver;RESTComponents;IndyIPServer;vcl;dsnapxml;adortl;dsnapcon;DataSnapClient;DataSnapProviderClient;TMSAIStudioPkgExtensions;DBXDb2Driver;TMSFNCPushNotificationsPkg;emsclientfiredac;FireDACPgDriver;FireDACDSDriver;tethering;ZDbc;bindcompvcl;CloudService;DBXSybaseASADriver;VCLTMSFNCCorePkg;FMXTee;DSPack_DXE2;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -121,7 +194,6 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>TMSLogo.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -134,7 +206,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <Icon_MainIcon>TMSLogo.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -143,11 +214,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Src\PDFLibFormFields.View.pas">
-            <Form>PDFLibFormFieldsView</Form>
+        <DCCReference Include="Src\PDFLib.Simple.View.pas">
+            <Form>PDFLibSimpleView</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="Src\UConsts.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -166,7 +236,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">PDFLibFormFields.dpr</Source>
+                    <Source Name="MainSource">PDFLibSimple.dpr</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -189,9 +259,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="bin\PDFLibFormFields.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\PDFLibSimple.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>PDFLibFormFields.exe</RemoteName>
+                        <RemoteName>PDFLibSimple.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1147,6 +1217,8 @@
                 <ProjectRoot Platform="Win64x" Name="$(PROJECTNAME)"/>
             </Deployment>
             <Platforms>
+                <Platform value="Android">True</Platform>
+                <Platform value="Android64">True</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>

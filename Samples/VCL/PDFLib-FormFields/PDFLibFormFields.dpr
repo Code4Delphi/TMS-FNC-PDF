@@ -3,7 +3,7 @@ program PDFLibFormFields;
 uses
   VCL.Forms,
   PDFLibFormFields.View in 'Src\PDFLibFormFields.View.pas' {PDFLibFormFieldsView},
-  UConsts in 'UConsts.pas';
+  UConsts in 'Src\UConsts.pas';
 
 {$R *.res}
 
