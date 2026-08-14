@@ -3,13 +3,13 @@
         <ProjectGuid>{32D69366-B27E-4524-8CD1-2F86108DF35E}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Samples\FMX\PDFLib-Simple\PDFLibSimple.dproj">
+        <Projects Include="FMX\PDFLib-Simple\PDFLibSimple.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Samples\VCL\PDFLib-Basic\PDFLibBasic.dproj">
+        <Projects Include="VCL\PDFLib-Basic\PDFLibBasic.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Samples\VCL\PDFLib-FormFields\PDFLibFormFields.dproj">
+        <Projects Include="VCL\PDFLib-FormFields\PDFLibFormFields.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -21,31 +21,31 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="PDFLibSimple">
-        <MSBuild Projects="Samples\FMX\PDFLib-Simple\PDFLibSimple.dproj"/>
+        <MSBuild Projects="FMX\PDFLib-Simple\PDFLibSimple.dproj"/>
     </Target>
     <Target Name="PDFLibSimple:Clean">
-        <MSBuild Projects="Samples\FMX\PDFLib-Simple\PDFLibSimple.dproj" Targets="Clean"/>
+        <MSBuild Projects="FMX\PDFLib-Simple\PDFLibSimple.dproj" Targets="Clean"/>
     </Target>
     <Target Name="PDFLibSimple:Make">
-        <MSBuild Projects="Samples\FMX\PDFLib-Simple\PDFLibSimple.dproj" Targets="Make"/>
+        <MSBuild Projects="FMX\PDFLib-Simple\PDFLibSimple.dproj" Targets="Make"/>
     </Target>
     <Target Name="PDFLibBasic">
-        <MSBuild Projects="Samples\VCL\PDFLib-Basic\PDFLibBasic.dproj"/>
+        <MSBuild Projects="VCL\PDFLib-Basic\PDFLibBasic.dproj"/>
     </Target>
     <Target Name="PDFLibBasic:Clean">
-        <MSBuild Projects="Samples\VCL\PDFLib-Basic\PDFLibBasic.dproj" Targets="Clean"/>
+        <MSBuild Projects="VCL\PDFLib-Basic\PDFLibBasic.dproj" Targets="Clean"/>
     </Target>
     <Target Name="PDFLibBasic:Make">
-        <MSBuild Projects="Samples\VCL\PDFLib-Basic\PDFLibBasic.dproj" Targets="Make"/>
+        <MSBuild Projects="VCL\PDFLib-Basic\PDFLibBasic.dproj" Targets="Make"/>
     </Target>
     <Target Name="PDFLibFormFields">
-        <MSBuild Projects="Samples\VCL\PDFLib-FormFields\PDFLibFormFields.dproj"/>
+        <MSBuild Projects="VCL\PDFLib-FormFields\PDFLibFormFields.dproj"/>
     </Target>
     <Target Name="PDFLibFormFields:Clean">
-        <MSBuild Projects="Samples\VCL\PDFLib-FormFields\PDFLibFormFields.dproj" Targets="Clean"/>
+        <MSBuild Projects="VCL\PDFLib-FormFields\PDFLibFormFields.dproj" Targets="Clean"/>
     </Target>
     <Target Name="PDFLibFormFields:Make">
-        <MSBuild Projects="Samples\VCL\PDFLib-FormFields\PDFLibFormFields.dproj" Targets="Make"/>
+        <MSBuild Projects="VCL\PDFLib-FormFields\PDFLibFormFields.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="PDFLibSimple;PDFLibBasic;PDFLibFormFields"/>

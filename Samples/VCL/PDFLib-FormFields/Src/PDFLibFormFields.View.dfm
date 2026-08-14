@@ -11,7 +11,7 @@ object PDFLibFormFieldsView: TPDFLibFormFieldsView
   Font.Name = 'Segoe UI'
   Font.Style = []
   TextHeight = 15
-  object Button1: TButton
+  object btnGeneratePDF: TButton
     Left = 64
     Top = 64
     Width = 225
@@ -19,6 +19,6 @@ object PDFLibFormFieldsView: TPDFLibFormFieldsView
     Caption = 'Generate PDF'
     TabOrder = 0
     WordWrap = True
-    OnClick = Button1Click
+    OnClick = btnGeneratePDFClick
   end
 end

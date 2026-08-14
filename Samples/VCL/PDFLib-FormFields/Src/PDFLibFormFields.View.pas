@@ -16,8 +16,8 @@ uses
 
 type
   TPDFLibFormFieldsView = class(TForm)
-    Button1: TButton;
-    procedure Button1Click(Sender: TObject);
+    btnGeneratePDF: TButton;
+    procedure btnGeneratePDFClick(Sender: TObject);
   private
 
   public
@@ -36,7 +36,7 @@ uses
 
 {$R *.dfm}
 
-procedure TPDFLibFormFieldsView.Button1Click(Sender: TObject);
+procedure TPDFLibFormFieldsView.btnGeneratePDFClick(Sender: TObject);
 const
   cLeft = 40;
   cFieldLeft = 180;

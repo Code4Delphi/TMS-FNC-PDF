@@ -43,7 +43,7 @@ var
   LPDF: TTMSFNCPDFLib;
   LText: string;
   LHTMLTextRect: TRectF;
-  LPageLayoutRect: TRectF;
+  LHeaderRect: TRectF;
   LLastTextRect: TRectF;
   LTextLines: TStringList;
   LBasePath: string;
@@ -63,34 +63,34 @@ begin
     LPDF.Header := 'TMS PDF Library';
     LPDF.Footer := 'Page 1/1';
     LPDF.NewPage;
-    LPageLayoutRect := LPDF.GetHeaderRect;
+    LHeaderRect := LPDF.GetHeaderRect;
 
     LPDF.Graphics.Font.SizeNoScale := 12;
     LPDF.Graphics.Font.Color := gcSteelblue;
     LPDF.Graphics.Font.Style := [TFontStyle.fsBold, TFontStyle.fsUnderline];
-    LLastTextRect := LPDF.Graphics.DrawText('Drawing primitives', PointF(LPageLayoutRect.Left, LPageLayoutRect.Bottom + 10));
+    LLastTextRect := LPDF.Graphics.DrawText('Drawing primitives', PointF(LHeaderRect.Left, LHeaderRect.Bottom + 10));
 
     LPDF.Graphics.Fill.Color := gcOrange;
     LPDF.Graphics.Stroke.Color := gcSteelblue;
-    LPDF.Graphics.DrawRectangle(RectF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 10, LPageLayoutRect.Left + 50, LLastTextRect.Bottom + 50));
+    LPDF.Graphics.DrawRectangle(RectF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 10, LHeaderRect.Left + 50, LLastTextRect.Bottom + 50));
 
     LPDF.Graphics.Fill.Color := gcLightseagreen;
     LPDF.Graphics.Fill.ColorTo := gcGreenyellow;
     LPDF.Graphics.Stroke.Color := gcBlack;
     LPDF.Graphics.Fill.Kind := gfkGradient;
-    LPDF.Graphics.DrawEllipse(RectF(LPageLayoutRect.Left + 75, LLastTextRect.Bottom + 10, LPageLayoutRect.Left + 150, LLastTextRect.Bottom + 50));
+    LPDF.Graphics.DrawEllipse(RectF(LHeaderRect.Left + 75, LLastTextRect.Bottom + 10, LHeaderRect.Left + 150, LLastTextRect.Bottom + 50));
 
     LPDF.Graphics.Stroke.Color := gcDarkmagenta;
     LPDF.Graphics.Stroke.Kind := gskSolid;
-    LPDF.Graphics.DrawLine(PointF(LPageLayoutRect.Left + 180, LLastTextRect.Bottom + 10), PointF(LPageLayoutRect.Left + 250, LLastTextRect.Bottom + 10));
+    LPDF.Graphics.DrawLine(PointF(LHeaderRect.Left + 180, LLastTextRect.Bottom + 10), PointF(LHeaderRect.Left + 250, LLastTextRect.Bottom + 10));
     LPDF.Graphics.Stroke.Kind := gskDash;
-    LPDF.Graphics.DrawLine(PointF(LPageLayoutRect.Left + 180, LLastTextRect.Bottom + 20), PointF(LPageLayoutRect.Left + 250, LLastTextRect.Bottom + 20));
+    LPDF.Graphics.DrawLine(PointF(LHeaderRect.Left + 180, LLastTextRect.Bottom + 20), PointF(LHeaderRect.Left + 250, LLastTextRect.Bottom + 20));
     LPDF.Graphics.Stroke.Kind := gskDot;
-    LPDF.Graphics.DrawLine(PointF(LPageLayoutRect.Left + 180, LLastTextRect.Bottom + 30), PointF(LPageLayoutRect.Left + 250, LLastTextRect.Bottom + 30));
+    LPDF.Graphics.DrawLine(PointF(LHeaderRect.Left + 180, LLastTextRect.Bottom + 30), PointF(LHeaderRect.Left + 250, LLastTextRect.Bottom + 30));
     LPDF.Graphics.Stroke.Kind := gskDashDot;
-    LPDF.Graphics.DrawLine(PointF(LPageLayoutRect.Left + 180, LLastTextRect.Bottom + 40), PointF(LPageLayoutRect.Left + 250, LLastTextRect.Bottom + 40));
+    LPDF.Graphics.DrawLine(PointF(LHeaderRect.Left + 180, LLastTextRect.Bottom + 40), PointF(LHeaderRect.Left + 250, LLastTextRect.Bottom + 40));
     LPDF.Graphics.Stroke.Kind := gskDashDotDot;
-    LPDF.Graphics.DrawLine(PointF(LPageLayoutRect.Left + 180, LLastTextRect.Bottom + 50), PointF(LPageLayoutRect.Left + 250, LLastTextRect.Bottom + 50));
+    LPDF.Graphics.DrawLine(PointF(LHeaderRect.Left + 180, LLastTextRect.Bottom + 50), PointF(LHeaderRect.Left + 250, LLastTextRect.Bottom + 50));
 
     LPDF.Graphics.Stroke.Color := gcDarkseagreen;
     LPDF.Graphics.Stroke.Width := 3;
@@ -115,17 +115,17 @@ begin
     LPDF.Graphics.Font.SizeNoScale := 12;
     LPDF.Graphics.Font.Color := gcSteelblue;
     LPDF.Graphics.Font.Style := [TFontStyle.fsBold, TFontStyle.fsUnderline];
-    LLastTextRect := LPDF.Graphics.DrawText('HTML formatted text support', PointF(LPageLayoutRect.Left, LLastTextRect.Bottom + 75));
+    LLastTextRect := LPDF.Graphics.DrawText('HTML formatted text support', PointF(LHeaderRect.Left, LLastTextRect.Bottom + 75));
     LPDF.Graphics.Font.SizeNoScale := 10;
-    LPageLayoutRect.Top := LPageLayoutRect.Top + 40;
-    LPageLayoutRect.Bottom := LPageLayoutRect.Bottom + 40;
-    LHTMLTextRect := RectF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 10, LPageLayoutRect.Right, 300);
+    LHeaderRect.Top := LHeaderRect.Top + 40;
+    LHeaderRect.Bottom := LHeaderRect.Bottom + 40;
+    LHTMLTextRect := RectF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 10, LHeaderRect.Right, 300);
     LLastTextRect := LPDF.Graphics.DrawHTMLText(LText, LHTMLTextRect);
 
     LPDF.Graphics.Font.SizeNoScale := 12;
     LPDF.Graphics.Font.Color := gcSteelblue;
     LPDF.Graphics.Font.Style := [TFontStyle.fsBold, TFontStyle.fsUnderline];
-    LLastTextRect := LPDF.Graphics.DrawText('Text flow in multiple columns', PointF(LPageLayoutRect.Left, LLastTextRect.Bottom + 10));
+    LLastTextRect := LPDF.Graphics.DrawText('Text flow in multiple columns', PointF(LHeaderRect.Left, LLastTextRect.Bottom + 10));
 
     LTextLines := TStringList.Create;
     try
@@ -133,7 +133,7 @@ begin
       LPDF.Graphics.Font.SizeNoScale := 10;
       LPDF.Graphics.Font.Color := gcBlack;
       LPDF.Graphics.Font.Style := [];
-      LPDF.Graphics.DrawText(LTextLines.Text, RectF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 10, LPageLayoutRect.Right, LLastTextRect.Bottom + 150), 3);
+      LPDF.Graphics.DrawText(LTextLines.Text, RectF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 10, LHeaderRect.Right, LLastTextRect.Bottom + 150), 3);
     finally
       LTextLines.Free;
     end;
@@ -141,32 +141,32 @@ begin
     LPDF.Graphics.Font.SizeNoScale := 12;
     LPDF.Graphics.Font.Color := gcSteelblue;
     LPDF.Graphics.Font.Style := [TFontStyle.fsBold, TFontStyle.fsUnderline];
-    LLastTextRect := LPDF.Graphics.DrawText('Image drawing and quality', PointF(LPageLayoutRect.Left, LLastTextRect.Bottom + 150));
+    LLastTextRect := LPDF.Graphics.DrawText('Image drawing and quality', PointF(LHeaderRect.Left, LLastTextRect.Bottom + 150));
 
-    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample.jpg', RectF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 10, LPageLayoutRect.Left + 110, LLastTextRect.Bottom + 110));
-    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample.jpg', RectF(LPageLayoutRect.Left + 120, LLastTextRect.Bottom + 10, LPageLayoutRect.Left + 220, LLastTextRect.Bottom + 110), True, True, itJPG, 0.1);
+    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample.jpg', RectF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 10, LHeaderRect.Left + 110, LLastTextRect.Bottom + 110));
+    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample.jpg', RectF(LHeaderRect.Left + 120, LLastTextRect.Bottom + 10, LHeaderRect.Left + 220, LLastTextRect.Bottom + 110), True, True, itJPG, 0.1);
 
-    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample2.jpg', PointF(LPageLayoutRect.Left + 240, LLastTextRect.Bottom + 10));
-    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample2.jpg', RectF(LPageLayoutRect.Left + 420, LLastTextRect.Bottom + 10, LPageLayoutRect.Left + 520, LLastTextRect.Bottom + 110), True, True, itJPG, 0.1);
+    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample2.jpg', PointF(LHeaderRect.Left + 240, LLastTextRect.Bottom + 10));
+    LPDF.Graphics.DrawImageFromFile(LBasePath + 'Sample2.jpg', RectF(LHeaderRect.Left + 420, LLastTextRect.Bottom + 10, LHeaderRect.Left + 520, LLastTextRect.Bottom + 110), True, True, itJPG, 0.1);
 //
     LPDF.Graphics.Font.SizeNoScale := 12;
     LPDF.Graphics.Font.Color := gcSteelblue;
     LPDF.Graphics.Font.Style := [TFontStyle.fsBold, TFontStyle.fsUnderline];
-    LLastTextRect := LPDF.Graphics.DrawText('Unicode text support', PointF(LPageLayoutRect.Left, LLastTextRect.Bottom + 150));
+    LLastTextRect := LPDF.Graphics.DrawText('Unicode text support', PointF(LHeaderRect.Left, LLastTextRect.Bottom + 150));
     LPDF.Graphics.Font.SizeNoScale := 10;
     LPDF.Graphics.Font.Color := gcBlack;
     LPDF.Graphics.Font.style := [];
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Belarusian</font></b>: Прывітанне Сусвет', PointF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 10));
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Chinese</font></b>: 你好，世界', PointF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 30));
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Thai</font></b>: สวัสดีชาวโลก', PointF(LPageLayoutRect.Left + 10, LLastTextRect.Bottom + 50));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Belarusian</font></b>: Прывітанне Сусвет', PointF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 10));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Chinese</font></b>: 你好，世界', PointF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 30));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Thai</font></b>: สวัสดีชาวโลก', PointF(LHeaderRect.Left + 10, LLastTextRect.Bottom + 50));
 
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Kyrgyz</font></b>: салам дүйнө', PointF(LPageLayoutRect.Left + 210, LLastTextRect.Bottom + 10));
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Japanese</font></b>: こんにちは世界', PointF(LPageLayoutRect.Left + 210, LLastTextRect.Bottom + 30));
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Telugu</font></b>: హలో వరల్డ్', PointF(LPageLayoutRect.Left + 210, LLastTextRect.Bottom + 50));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Kyrgyz</font></b>: салам дүйнө', PointF(LHeaderRect.Left + 210, LLastTextRect.Bottom + 10));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Japanese</font></b>: こんにちは世界', PointF(LHeaderRect.Left + 210, LLastTextRect.Bottom + 30));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Telugu</font></b>: హలో వరల్డ్', PointF(LHeaderRect.Left + 210, LLastTextRect.Bottom + 50));
 
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Vietnamese</font></b>: Chào thế giới', PointF(LPageLayoutRect.Left + 410, LLastTextRect.Bottom + 10));
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Greek</font></b>: Γειά σου Κόσμε', PointF(LPageLayoutRect.Left + 410, LLastTextRect.Bottom + 30));
-    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Lao</font></b>: ສະ​ບາຍ​ດີ​ຊາວ​ໂລກ', PointF(LPageLayoutRect.Left + 410, LLastTextRect.Bottom + 50));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Vietnamese</font></b>: Chào thế giới', PointF(LHeaderRect.Left + 410, LLastTextRect.Bottom + 10));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Greek</font></b>: Γειά σου Κόσμε', PointF(LHeaderRect.Left + 410, LLastTextRect.Bottom + 30));
+    LPDF.Graphics.DrawHTMLText('<b><font color="gcDarkOrange">Lao</font></b>: ສະ​ບາຍ​ດີ​ຊາວ​ໂລກ', PointF(LHeaderRect.Left + 410, LLastTextRect.Bottom + 50));
 
 
     LPDF.EndDocument(True);

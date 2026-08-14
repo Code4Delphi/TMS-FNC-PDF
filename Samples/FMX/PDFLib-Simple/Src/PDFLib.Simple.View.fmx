@@ -1,11 +1,34 @@
 object PDFLibSimpleView: TPDFLibSimpleView
   Left = 0
   Top = 0
-  Caption = 'TMS FNC PDFLib - Simple'
-  ClientHeight = 480
+  Caption = 'S'
+  ClientHeight = 208
   ClientWidth = 605
+  Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+  object btnGeneratePDF: TButton
+    Position.X = 42.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 167.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Generate Simple PDF'
+    TextSettings.Trimming = None
+    OnClick = btnGeneratePDFClick
+  end
+  object btnGenerateWithImage: TButton
+    Position.X = 42.000000000000000000
+    Position.Y = 65.000000000000000000
+    Size.Width = 167.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Generate PDF with image'
+    TextSettings.Trimming = None
+    OnClick = btnGenerateWithImageClick
+  end
 end
