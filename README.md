@@ -12,6 +12,7 @@ O componente é compatível com VCL, FireMonkey, Lazarus LCL e TMS WEB Core, per
 ## Links úteis
 - [Site oficial / onde baixar](https://www.tmssoftware.com/site/tmsfnccore-pdf.asp)
 - [Documentação](https://download.tmssoftware.com/doc/tmsfnccore/components/pdflibrary/)
+- [Artigo sobre o uso do componente](https://code4delphi.com.br/blog/geracao-de-pdfs-com-delphi-para-vcl-fmx-web-core-e-lazarus/)
 
 ## Vídeos de demonstração
 - Em breve
