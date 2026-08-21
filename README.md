@@ -16,7 +16,11 @@ O componente é compatível com VCL, FireMonkey, Lazarus LCL e TMS WEB Core, per
 
 ## Vídeos de demonstração
 - Em breve
- 
+
+---
+
+<img width="768" height="432" alt="pdf-com-delphi-blog-768x432-v2" src="https://github.com/user-attachments/assets/25e97fae-d6ad-4434-b984-5bf29cccfe5d" />
+
 <br>
 
 ## 📞 Contatos
