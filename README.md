@@ -17,7 +17,7 @@ O componente é compatível com VCL, FireMonkey, Lazarus LCL e TMS WEB Core, per
 - [Artigo sobre o uso do componente](https://code4delphi.com.br/blog/geracao-de-pdfs-com-delphi-para-vcl-fmx-web-core-e-lazarus/)
 
 ## Vídeos de demonstração
-- Em breve
+- [PDF com DELPHI e LAZARUS | VCL, FMX e WEB | #024](https://www.youtube.com/watch?v=_URJb2EPxVM)
 
 <br>
 
